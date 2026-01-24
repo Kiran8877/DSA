@@ -1,39 +1,34 @@
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
-         vector<int> result;
-        if (matrix.empty()) return result;
-        
+        vector<int> ans;
+        if (matrix.empty()) return ans;
+
         int top = 0, bottom = matrix.size() - 1;
         int left = 0, right = matrix[0].size() - 1;
-        
+
         while (top <= bottom && left <= right) {
-            // left → right
-            for (int i = left; i <= right; i++)
-                result.push_back(matrix[top][i]);
+            for (int col = left; col <= right; col++)
+                ans.push_back(matrix[top][col]);
             top++;
-            
-            // top → bottom
-            for (int i = top; i <= bottom; i++)
-                result.push_back(matrix[i][right]);
+
+            for (int row = top; row <= bottom; row++)
+                ans.push_back(matrix[row][right]);
             right--;
-            
-            // right → left
+
             if (top <= bottom) {
-                for (int i = right; i >= left; i--)
-                    result.push_back(matrix[bottom][i]);
+                for (int col = right; col >= left; col--)
+                    ans.push_back(matrix[bottom][col]);
                 bottom--;
             }
-            
-            // bottom → top
+
             if (left <= right) {
-                for (int i = bottom; i >= top; i--)
-                    result.push_back(matrix[i][left]);
+                for (int row = bottom; row >= top; row--)
+                    ans.push_back(matrix[row][left]);
                 left++;
             }
         }
-        
-        return result;
-    
+
+        return ans;
     }
 };
