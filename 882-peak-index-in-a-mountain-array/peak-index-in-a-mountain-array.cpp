@@ -3,7 +3,6 @@ public:
     int peakIndexInMountainArray(vector<int>& arr) {
         int left=0;
         int right=arr.size()-1;
-        //int big=INT_MIN;
         while(left<right){
             int mid=left+(right-left)/2;
             if(arr[mid]>arr[mid+1]){
@@ -14,7 +13,7 @@ public:
             }
 
             }
-             return left;
+             return right;
         }
        
 };
